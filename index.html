@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savimbi Clinic | Patient Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-area">
+            <div class="logo">SC</div>
+            <div>
+                <h2>Savimbi Clinic</h2>
+                <span>Patient Management</span>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-btn active" data-section="dashboard">
+                <span>📊</span> Dashboard
+            </button>
+
+            <button class="nav-btn" data-section="register">
+                <span>👤</span> Register Patient
+            </button>
+
+            <button class="nav-btn" data-section="visits">
+                <span>📋</span> Patient Visits
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>© 2026 Savimbi Clinic</p>
+            <small>Patient Management System</small>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+            <div>
+                <h1 id="pageTitle">Dashboard</h1>
+                <p>Manage patients and clinic visits efficiently.</p>
+            </div>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section active">
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">👥</div>
+                    <div>
+                        <span>Total Patients</span>
+                        <strong id="totalPatients">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">📅</div>
+                    <div>
+                        <span>Registered Today</span>
+                        <strong id="registeredToday">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">🏥</div>
+                    <div>
+                        <span>Currently In Clinic</span>
+                        <strong id="currentlyInClinic">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">✓</div>
+                    <div>
+                        <span>Completed Visits</span>
+                        <strong id="completedVisits">0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card dashboard-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Recent Patients</h2>
+                        <p>Latest registered patients</p>
+                    </div>
+
+                    <button class="btn primary" id="goRegister">
+                        + Register Patient
+                    </button>
+                </div>
+
+                <div id="recentPatients" class="recent-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">👥</div>
+                        <h3>No patients yet</h3>
+                        <p>Register your first patient to see them here.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- REGISTER -->
+        <section id="register" class="section">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div>
+                        <h2 id="formTitle">Register New Patient</h2>
+                        <p>Enter patient information below.</p>
+                    </div>
+                </div>
+
+                <form id="patientForm">
+
+                    <div class="form-layout">
+
+                        <div class="photo-section">
+
+                            <div class="photo-preview" id="photoPreview">
+                                <span>👤</span>
+                            </div>
+
+                            <label class="upload-btn">
+                                Choose Photo
+                                <input type="file"
+                                       id="photo"
+                                       accept="image/*"
+                                       hidden>
+                            </label>
+
+                            <button type="button"
+                                    class="remove-photo"
+                                    id="removePhoto">
+                                Remove Photo
+                            </button>
+
+                        </div>
+
+                        <div class="form-fields">
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+                                    <label for="name">
+                                        Full Name *
+                                    </label>
+
+                                    <input type="text"
+                                           id="name"
+                                           placeholder="Enter patient's full name"
+                                           required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="patientId">
+                                        Patient ID *
+                                    </label>
+
+                                    <input type="text"
+                                           id="patientId"
+                                           placeholder="e.g. SC-001"
+                                           required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">
+                                        Phone Number
+                                    </label>
+
+                                    <input type="tel"
+                                           id="phone"
+                                           placeholder="e.g. 0712345678">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="age">
+                                        Age *
+                                    </label>
+
+                                    <input type="number"
+                                           id="age"
+                                           min="0"
+                                           max="150"
+                                           placeholder="Age"
+                                           required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="gender">
+                                        Gender *
+                                    </label>
+
+                                    <select id="gender" required>
+                                        <option value="">Select gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="reason">
+                                        Reason for Visit *
+                                    </label>
+
+                                    <textarea id="reason"
+                                              rows="4"
+                                              placeholder="Describe reason for visit..."
+                                              required></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions">
+
+                                <button type="button"
+                                        class="btn secondary"
+                                        id="cancelEdit">
+                                    Clear
+                                </button>
+
+                                <button type="submit"
+                                        class="btn primary"
+                                        id="submitBtn">
+                                    Register Patient
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- VISITS -->
+        <section id="visits" class="section">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div>
+                        <h2>Patient Visits</h2>
+                        <p>View and manage all patient records.</p>
+                    </div>
+
+                    <div class="header-actions">
+
+                        <button class="btn secondary" id="exportBtn">
+                            Export CSV
+                        </button>
+
+                        <button class="btn danger" id="deleteAllBtn">
+                            Delete All
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="toolbar">
+
+                    <input type="search"
+                           id="searchInput"
+                           placeholder="Search by name, patient ID or phone...">
+
+                    <select id="statusFilter">
+                        <option value="all">All Statuses</option>
+                        <option value="In Clinic">In Clinic</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Patient</th>
+                                <th>Patient ID</th>
+                                <th>Phone</th>
+                                <th>Age / Gender</th>
+                                <th>Date</th>
+                                <th>Time In</th>
+                                <th>Time Out</th>
+                                <th>Duration</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="patientsTableBody"></tbody>
+
+                    </table>
+
+                    <div id="tableEmpty" class="empty-state hidden">
+                        <div class="empty-icon">📋</div>
+                        <h3>No records found</h3>
+                        <p>No patient records match your search.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
